@@ -80,12 +80,8 @@ export default function Home() {
             >
               Servicios
             </a>
-            <a
-              href="/contacto"
-              className="hover:text-indigo-400 transition-colors"
-            >
-              Contacto
-            </a>
+          
+             
           </div>
 
           {/* CTA Desktop */}
@@ -135,9 +131,7 @@ export default function Home() {
               <a href="#servicios" onClick={() => setMenuOpen(false)}>
                 Servicios
               </a>
-              <a href="/contacto" onClick={() => setMenuOpen(false)}>
-                Contacto
-              </a>
+              
               <a
                 href="/contacto"
                 onClick={() => setMenuOpen(false)}
