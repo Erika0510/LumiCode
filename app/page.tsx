@@ -15,28 +15,29 @@ const SLIDES: Slide[] = [
     image: "/images/B-MK_02_2121x.progressive.webp",
     title: "Impulsa tu negocio al mundo digital",
     subtitle:
-      "Diseñamos sitios web modernos para que tus clientes confíen y te encuentren más fácil."
+      "Diseñamos sitios web modernos para que tus clientes confíen y te encuentren más fácil.",
   },
   {
     id: 2,
     image: "/images/technology-4256272_1920.jpg",
     title: "Webs y aplicaciones a la medida",
     subtitle:
-      "Transformamos procesos manuales en soluciones tecnológicas simples y efectivas."
+      "Transformamos procesos manuales en soluciones tecnológicas simples y efectivas.",
   },
   {
     id: 3,
     image: "/images/tecnologia-na-educação-1920x1000-c-default.png",
     title: "Pensando en el futuro: IA y automatización",
     subtitle:
-      "Preparamos tu negocio para integrar chatbots, análisis inteligente y más."
-  }
+      "Preparamos tu negocio para integrar chatbots, análisis inteligente y más.",
+  },
 ];
 
 const CAROUSEL_INTERVAL = 3000;
 
 export default function Home() {
   const [current, setCurrent] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -52,36 +53,101 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-50">
-      {/* NAVBAR */}
-      <header className="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
+      {/* ✅ NAVBAR RESPONSIVO */}
+      <header className="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
           <a href="/" className="text-xl font-semibold tracking-tight">
             <span className="text-indigo-400">Lumi</span>Code
           </a>
 
-          <div className="hidden gap-6 text-sm md:flex">
+          {/* Desktop */}
+          <div className="hidden md:flex gap-6 text-sm">
             <a href="/" className="hover:text-indigo-400 transition-colors">
               Inicio
             </a>
             <a href="/about" className="hover:text-indigo-400 transition-colors">
               Sobre nosotros
             </a>
-            <a href="#proyectos" className="hover:text-indigo-400 transition-colors">
+            <a
+              href="#proyectos"
+              className="hover:text-indigo-400 transition-colors"
+            >
               Proyectos
             </a>
-            <a href="#servicios" className="hover:text-indigo-400 transition-colors">
+            <a
+              href="#servicios"
+              className="hover:text-indigo-400 transition-colors"
+            >
               Servicios
             </a>
-           
+            <a
+              href="/contacto"
+              className="hover:text-indigo-400 transition-colors"
+            >
+              Contacto
+            </a>
           </div>
 
+          {/* CTA Desktop */}
           <a
             href="/contacto"
-            className="hidden rounded-full bg-indigo-500 px-4 py-1.5 text-sm font-medium text-white shadow-md shadow-indigo-500/30 hover:bg-indigo-400 md:inline-block"
+            className="hidden md:inline-block rounded-full bg-indigo-500 px-4 py-1.5 text-sm font-medium text-white shadow-md shadow-indigo-500/30 hover:bg-indigo-400"
           >
             Cotizar
           </a>
+
+          {/* Botón menú móvil */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden text-slate-200 ring-1 ring-slate-700 rounded-md p-2"
+            aria-label="Abrir menú"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.8"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
         </nav>
+
+        {/* Panel móvil */}
+        {menuOpen && (
+          <div className="md:hidden border-t border-slate-800 bg-slate-950 text-sm">
+            <div className="mx-auto max-w-6xl px-4 py-4 flex flex-col gap-3">
+              <a href="/" onClick={() => setMenuOpen(false)}>
+                Inicio
+              </a>
+              <a href="/about" onClick={() => setMenuOpen(false)}>
+                Sobre nosotros
+              </a>
+              <a href="#proyectos" onClick={() => setMenuOpen(false)}>
+                Proyectos
+              </a>
+              <a href="#servicios" onClick={() => setMenuOpen(false)}>
+                Servicios
+              </a>
+              <a href="/contacto" onClick={() => setMenuOpen(false)}>
+                Contacto
+              </a>
+              <a
+                href="/contacto"
+                onClick={() => setMenuOpen(false)}
+                className="mt-2 rounded-full bg-indigo-500 px-4 py-2 text-center font-medium text-white hover:bg-indigo-400"
+              >
+                Cotizar
+              </a>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* HERO CON CARRUSEL DE FONDO */}
